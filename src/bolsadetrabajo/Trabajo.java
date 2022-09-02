@@ -19,7 +19,6 @@ public class Trabajo {
     
     public void setNombre(String nombre){
         this.nombre = nombre;
-        // ...validar que el nombre ingreseado esté disponible antes de setearlo inmediatamente.
     }
     
     public String getNombre(){
@@ -36,12 +35,12 @@ public class Trabajo {
         this.postulantes.add(p);
     }
     
-    public void mostrarPostulantes(){
+    public void mostrarPostulantes(){ 
         if(postulantes.isEmpty())
             System.out.println("No hay postulantes.");
         else
             for (Postulante post : postulantes) { // Por cada postulante en la colección de postulantes...
-                System.out.println(post);
+                System.out.println("Nombre: "+post.getNombre()+"   Rut: "+post.getRut());
             }
     }
     

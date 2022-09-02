@@ -7,18 +7,16 @@ public class Postulante {
     private int edad; // Edad del postulante
     private int experiencia; // Años de experiencia en el mundo laboral general.
     private String disponibilidad; // Puede ser solo "fulltime" o "partime"
-    private String puestoDeInteres; // Puesto al que postula.
     private ArrayList<String> habilidades; // Lista de habilidades que posee el postulante.
    
     // Constructor
-    public Postulante(String nombre, int rut, int edad, int experiencia, String disponibilidad, String puestoDeInteres){
+    public Postulante(String nombre, int rut, int edad, int experiencia, String disponibilidad){
         setNombre(nombre);
         setRut(rut);
         setEdad(edad);
         this.experiencia = experiencia;
         setDisponibilidad(disponibilidad);
         this.habilidades = new ArrayList<>();
-        this.puestoDeInteres = puestoDeInteres; // Dependiendo de como avancemos, ver si esto se asigna de inmediato en el constructor o despues con un set.
     }
     
     public void agregarHabilidad(String hab){
@@ -85,17 +83,9 @@ public class Postulante {
         return edad;
     }
 
-    public void setPuestoDeInteres(String puestoDeInteres) {
-        this.puestoDeInteres = puestoDeInteres;
-    }
-    
-    public String getPuestoDeInteres(){         
-        return puestoDeInteres;    
-    }
-
     @Override
     public String toString() { // Estado para objetos postulante.
-        return "Postulante{" + "nombre=" + nombre + ", rut=" + rut + ", edad=" + edad + ", experiencia=" + experiencia + ", disponibilidad=" + disponibilidad + ", puestoDeInteres=" + puestoDeInteres + ", habilidades=" + habilidades + '}';
+        return "Postulante{" + "nombre=" + nombre + ", rut=" + rut + ", edad=" + edad + ", experiencia=" + experiencia + ", disponibilidad=" + disponibilidad + ", habilidades=" + habilidades + '}';
     }
   
 }

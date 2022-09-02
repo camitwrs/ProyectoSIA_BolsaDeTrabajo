@@ -5,78 +5,142 @@ Tema 10: Manejo de Bolsa de Trabajo.
 package bolsadetrabajo;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class Main{
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         
-        // Se crean 3 puestos de trabajo.
-        Trabajo puesto1 = new Trabajo("Desarrollador web");
-        Trabajo puesto2 = new Trabajo("Analista de datos");
-        Trabajo puesto3 = new Trabajo("Experto en ciberseguridad");
-        
-        // Se almacenan los puestos de trabajo en un HashMap.
+        // Creacion de un HashMap de objetos tipo Trabajo. <Key: Nombre del trabajo, Value: Objeto trabajo)
         HashMap<String,Trabajo> puestos = new HashMap<>();
-        if(puestos.containsKey(puesto1.getNombre()) || puestos.containsKey(puesto2.getNombre()) || puestos.containsKey(puesto3.getNombre()) ){
-            System.out.println("Ya existe ese puesto en el mapa");
-        }else{
-            puestos.put(puesto1.getNombre(), puesto1);
-            puestos.put(puesto2.getNombre(), puesto2);
-            puestos.put(puesto3.getNombre(), puesto3);
+        
+        // ----------------------------- Menu ----------------------------------
+        boolean exit = false;
+        String linea;
+        int opcion;
+        BufferedReader lector = new BufferedReader (new InputStreamReader(System.in));
+        while (exit != true){
+            System.out.println("----MENU----");
+            System.out.println("1: Agregar puesto de trabajo.");
+            System.out.println("2: Postular a un puesto de trabajo. (agregar postulante a determinado puesto)");
+            System.out.println("3: Mostrar postulantes de un puesto de trabajo.");
+            System.out.println("0: Salir");
+                
+            opcion = leerOpcion();
+                
+            switch (opcion){
+                case 1:
+                    // Se crea el trabajo.
+                    String nomb, req;
+                    System.out.println("Ingrese el nombre del puesto de trabajo.");
+                    nomb = lector.readLine();
+                    Trabajo trab = new Trabajo(nomb);
+                    for(int i = 0 ; i < 3 ; i++){
+                        System.out.println("Ingrese el requisito "+(i+1)+":");
+                        req = lector.readLine();
+                        trab.agregarRequisito(req);
+                    }
+                    // Se almacena en el HashMap.
+                    if(puestos.containsKey(trab.getNombre()))
+                        System.out.println("Ya existe ese puesto en el mapa.");
+                    else
+                        puestos.put(trab.getNombre(), trab);
+              
+                    break;
+                        
+                case 2:
+                    // Se crea el postulante
+                    String nomb1, dispo, hab;
+                    int rut,edad,exp;
+                    System.out.println("Ingrese su nombre:");
+                    nomb1=lector.readLine();
+                    System.out.println("Ingrese su rut:");
+                    rut=Integer.parseInt (lector.readLine());
+                    System.out.println("Ingrese su edad:");
+                    edad=Integer.parseInt(lector.readLine());
+                    System.out.println("Ingrese sus anios de experiencia:");
+                    exp=Integer.parseInt(lector.readLine());
+                    System.out.println("Ingrese la jornada deseada (fulltime o partime):");
+                    dispo=lector.readLine();
+                    Postulante post = new Postulante(nomb1, rut, edad, exp, dispo); 
+                    for(int i = 0 ; i < 3 ; i++){
+                        System.out.println("Ingrese una habilidad/conocimiento:");
+                        hab = lector.readLine();
+                        post.agregarHabilidad(hab);
+                    }
+                    // Se muestran los trabajos disponibles
+                    if(puestos.isEmpty()){
+                        System.out.println("No hay puestos disponibles.");
+                    }else{
+                        int cont = 0;
+                        System.out.println("Hay "+puestos.size()+" puestos de trabajos disponibles.");
+                        for(String aux_nombre:puestos.keySet()){
+                            Trabajo aux_puesto = puestos.get(aux_nombre);
+                            System.out.println((cont+1)+". "+aux_puesto.getNombre());
+                            cont++;
+                        }
+                    }
+                    
+                    // Pide el nombre del trabajo al que quiere postular.
+                    System.out.println("Ingrese el nombre del puesto de trabajo.");
+                    String nombre_del_puesto = lector.readLine();
+                    if(puestos.containsKey(nombre_del_puesto)){ // Si existe ese puesto
+                        Trabajo trab1 = puestos.get(nombre_del_puesto);
+                        trab1.agregarPostulante(post);
+                    }else
+                        System.out.println("No existe ese trabajo.");
+                        
+                    break;
+                        
+                case 3:
+                    System.out.println("Ingrese el nombre del puesto de trabajo.");
+                    String aux_puesto = lector.readLine();
+                    if(puestos.containsKey(aux_puesto)){ // Si existe ese puesto
+                        Trabajo trab2 = puestos.get(aux_puesto);
+                        trab2.mostrarPostulantes();
+                    }else
+                        System.out.println("No existe ese trabajo.");
+                    break;
+                    
+                case 0:
+                    exit = true;
+                    break;
+                    
+            }
         }
+    }
+    
+    public static int leerOpcion() throws IOException{
+        String linea;
+        int opcion;
+        BufferedReader lector = new BufferedReader (new InputStreamReader(System.in));
+        boolean trigger = false;
         
-        // Se agregan los 3 requisitos de los puestos.
-        puesto1.agregarRequisito("JavaScript");
-        puesto1.agregarRequisito("SQL");
-        puesto1.agregarRequisito("Angular");
-
-        puesto2.agregarRequisito("Python");
-        puesto2.agregarRequisito("Excel");
-        puesto2.agregarRequisito("SQL");
         
-        puesto3.agregarRequisito("Bash");
-        puesto3.agregarRequisito("Cloud Security");
-        puesto3.agregarRequisito("Firewall");
-        
-        // Se muestra el tamaño del HashMap y su contenido.
-        System.out.println("Estado inicial de los puestos:");
-        System.out.println("Hay "+ puestos.size() + " puestos de trabajo. Se mostraran a continuacion:");
-        for(String key_nombre:puestos.keySet()){
-            Trabajo value_puesto = puestos.get(key_nombre);
-            System.out.println(value_puesto); 
+        while(trigger != true){
+            System.out.println("Ingrese su opcion:");
+            linea = lector.readLine();
+            
+            if (soloNumeros(linea) == true){
+                trigger = true;
+                opcion = Integer.parseInt(linea);
+                return opcion;
+            }
+            else{
+                System.out.println("Error, ha ingresado una opcion no valida, intente nuevamente.");
+            }
         }
-        
-        // Se crean 2 postulantes.   
-        Postulante post1 = new Postulante("Pepe", 11111111, 21, 2, "fulltime", "Desarrollador web");
-        Postulante post2 = new Postulante("Maria", 50606333, 18, 0, "partime", "Desarrollador web");
-        
-        // Se agregan las habilidades de los postulantes.
-        post1.agregarHabilidad("JavaScript");
-        post1.agregarHabilidad("Python");
-        
-        post2.agregarHabilidad("Excel");
-        post2.agregarHabilidad("Firewall");
-        post2.agregarHabilidad("Bash");
-        
-        // Se agregan los postulantes al puesto de trabajo.
-        puesto1.agregarPostulante(post1);
-        puesto1.agregarPostulante(post2);
-        
-        // Se muestra el tamaño del ArrayList de postulantes.
-        System.out.println("Hay "+ puesto1.cantPostulantes()+ " postulantes. Se mostraran a continuacion:");
-       
-        System.out.println("Estado final de los puestos luego de agregar postulantes:");
-        System.out.println(puestos);
-        
-        // Listado de postulantes del puesto deseado.
-        System.out.println("--- Mostrar postulantes de X trabajo---Ej: Desarrollador web");
-        String nombre_del_puesto = "Desarrollador web";
-        if(puestos.containsKey(nombre_del_puesto)){ // Si hay una key llamada Desarrollador web
-            Trabajo puesto = puestos.get(nombre_del_puesto); // Guardo el struct Trabajo
-            puesto.mostrarPostulantes();
-        }else{
-            System.out.println("No existe ese trabajo.");
-        }
+        return 0;
+    }
+    
+        private static boolean soloNumeros(String line){
+        boolean esNumero = line.matches("[0-9]+");
+        if (esNumero)
+            return esNumero;
+        else
+            return false;
     }
     
 }
