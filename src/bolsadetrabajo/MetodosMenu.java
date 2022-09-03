@@ -64,6 +64,7 @@ public class MetodosMenu {
             if(puestos.containsKey(nombre_del_puesto)){ // Si existe ese puesto
                 Trabajo puesto = (Trabajo) puestos.get(nombre_del_puesto);
                 puesto.agregarPostulante(post);
+                System.out.println("Tu postulacion ha sido agregada.");
             }else
                 System.out.println("No existe ese trabajo.");
             }
@@ -71,7 +72,7 @@ public class MetodosMenu {
     
     public void mostrarPostulantesPuesto(BufferedReader entrada, HashMap puestos) throws IOException{
         // Busca el puesto de trabajo y muestra los postulantes.
-        System.out.println("Ingrese el nombre del puesto de trabajo al que desea postular:");
+        System.out.println("Ingrese el nombre del puesto de trabajo:");
         String aux_puesto = entrada.readLine();
         if(puestos.containsKey(aux_puesto)){ // Si existe ese puesto
             Trabajo trab = (Trabajo) puestos.get(aux_puesto);

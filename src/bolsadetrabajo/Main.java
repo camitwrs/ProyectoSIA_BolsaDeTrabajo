@@ -15,6 +15,10 @@ public class Main{
         // Creacion de un HashMap de objetos tipo Trabajo. <Key: Nombre del trabajo, Value: Objeto trabajo)
         HashMap<String,Trabajo> puestos = new HashMap<>();
         
+        // SIA 1.4 Ingreso de datos iniciales en duro.
+        Trabajo ejemplo = new Trabajo("Desarrollador web");
+        puestos.put(ejemplo.getNombre(), ejemplo);
+        
         // ----------------------------- Menu ----------------------------------
         boolean exit = false;
         
@@ -38,7 +42,7 @@ public class Main{
             
             switch (opcion){
                 case 1:
-                    conexion.agregarPuestoTrabajo(lector, puestos);
+                    conexion.agregarPuestoTrabajo(lector, puestos); 
                     break;
                         
                 case 2:
