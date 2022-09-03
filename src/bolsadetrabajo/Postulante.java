@@ -6,16 +6,16 @@ public class Postulante {
     private int rut; // Rut del postulante (sin digito verificador)
     private int edad; // Edad del postulante
     private int experiencia; // Años de experiencia en el mundo laboral general.
-    private String disponibilidad; // Puede ser solo "fulltime" o "partime"
+    private String jornada; // Puede ser solo "fulltime" o "partime"
     private ArrayList<String> habilidades; // Lista de habilidades que posee el postulante.
    
     // Constructor
-    public Postulante(String nombre, int rut, int edad, int experiencia, String disponibilidad){
+    public Postulante(String nombre, int rut, int edad, int experiencia, String jornada){
         setNombre(nombre);
         setRut(rut);
         setEdad(edad);
         this.experiencia = experiencia;
-        setDisponibilidad(disponibilidad);
+        setJornada(jornada);
         this.habilidades = new ArrayList<>();
     }
     
@@ -23,15 +23,15 @@ public class Postulante {
         this.habilidades.add(hab);
     }
     
-    public void setDisponibilidad(String disponibilidad){
-        if(disponibilidad.equalsIgnoreCase("fulltime") == true || disponibilidad.equalsIgnoreCase("partime") == true)
-            this.disponibilidad = disponibilidad;
+    public void setJornada(String jornada){
+        if(jornada.equalsIgnoreCase("fulltime") == true || jornada.equalsIgnoreCase("partime") == true)
+            this.jornada = jornada;
         else
             System.out.println("Jornada invalida.");
     }
     
-    public String getDisponibilidad() {
-        return disponibilidad;
+    public String getJornada() {
+        return jornada;
     }
    
     public void setRut(int rut){    
@@ -85,7 +85,7 @@ public class Postulante {
 
     @Override
     public String toString() { // Estado para objetos postulante.
-        return "Postulante{" + "nombre=" + nombre + ", rut=" + rut + ", edad=" + edad + ", experiencia=" + experiencia + ", disponibilidad=" + disponibilidad + ", habilidades=" + habilidades + '}';
+        return "Postulante{" + "nombre=" + nombre + ", rut=" + rut + ", edad=" + edad + ", experiencia=" + experiencia + ", jornada=" + jornada + ", habilidades=" + habilidades + '}';
     }
   
 }
