@@ -17,3 +17,6 @@ ya que este último necesita de un trabajo disponible para hacer efectiva su pos
 
 Obs 2: En lo posible, respetar las mayúsculas y minúsculas a la hora de ingresar el
 nombre del puesto de trabajo en ambas ocasiones.
+
+Obs 3: Falta aplicar la salida del programa o reintento cuando se ingresan datos 
+inválidos (y el programa avisa de estos datos)
