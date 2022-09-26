@@ -22,7 +22,10 @@ public class CargaModel {
                 String arr[] = linea.split(",");
                 if(arr.length >= 1){
                     Trabajo t = new Trabajo();
-                    t.setNombre(arr[0]);
+                    t.setNombre(arr[0].toLowerCase());
+                    t.agregarRequisito(arr[1]);
+                    t.agregarRequisito(arr[2]);
+                    t.agregarRequisito(arr[3]);
                     puestos.add(t);
                 }
                 

@@ -1,21 +1,22 @@
 package modelo;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Trabajo {
     private String nombre; // Nombre del trabajo.
     private ArrayList<String> requisitos; // Lista de requisitos del puesto.
-    private ArrayList<Postulante> postulantes; // Lista de postulantes al puesto.
+    private HashMap<Integer,Postulante> postulantes; // Lista de postulantes al puesto.
     
     // Constructor
     public Trabajo(String nombre){
         this.nombre = nombre;
         this.requisitos = new ArrayList<>();
-        this.postulantes = new ArrayList<>();
+        this.postulantes = new HashMap<>();
     }
     
     public Trabajo(){
         this.requisitos = new ArrayList<>();
-        this.postulantes = new ArrayList<>();
+        this.postulantes = new HashMap<>();
     }
     
     public void agregarRequisito(String req){
@@ -37,17 +38,24 @@ public class Trabajo {
     }
     
     public void agregarPostulante(Postulante p){
-        this.postulantes.add(p);
+        this.postulantes.put(p.getRut(),p);
     }
+    public void mostrarPostulantes(){ 
+        if(postulantes.isEmpty())
+            System.out.println("No hay postulantes.");
+        else
+            for (Postulante post : postulantes.values()) {
+                System.out.println("Nombre: "+post.getNombre()+" Edad: "+post.getEdad()+" Rut: "+post.getRut());
+            }
+}
     
+
     public int cantPostulantes(){
         int temp = 0;
         if(postulantes.isEmpty())
-            return 0;
+            return temp;
         else
-            for (Postulante post : postulantes) { // Por cada postulante en la colección de postulantes...
-                temp++;
-            }
+            temp = postulantes.size();
         return temp;
     }
 }
