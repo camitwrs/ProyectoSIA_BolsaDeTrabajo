@@ -1,4 +1,4 @@
-package bolsadetrabajo;
+package modelo;
 import java.util.ArrayList;
 
 public class Postulante {
@@ -8,14 +8,14 @@ public class Postulante {
     private int experiencia; // Años de experiencia en el mundo laboral general.
     private String jornada; // Puede ser solo "fulltime" o "partime"
     private ArrayList<String> habilidades; // Lista de habilidades que posee el postulante.
-   
+ 
     // Constructor
     public Postulante(String nombre, int rut, int edad, int experiencia, String jornada){
-        setNombre(nombre);
-        setRut(rut);
-        setEdad(edad);
+        this.nombre = nombre;
+        this.rut = rut;
+        this.edad = edad;
         this.experiencia = experiencia;
-        setJornada(jornada);
+        this.jornada = jornada;
         this.habilidades = new ArrayList<>();
     }
     
@@ -23,30 +23,41 @@ public class Postulante {
         this.habilidades.add(hab);
     }
     
-    public void setJornada(String jornada){
+    public boolean verificarJornada(String jornada){
         if(jornada.equalsIgnoreCase("fulltime") == true || jornada.equalsIgnoreCase("partime") == true)
-            this.jornada = jornada;
+            return true;
         else
-            System.out.println("Jornada invalida.");
+            return false;
+    }
+    
+    public void setJornada(String jornada){
+        this.jornada = jornada;
     }
     
     public String getJornada() {
         return jornada;
     }
-   
-    public void setRut(int rut){    
-        verificacion(rut);
+    
+    public void setRut(int rut){
+        this.rut = rut;
     }
     
     // Sobrecarga de métodos
-    private void verificacion(int rut){
-        if(Integer.toString(rut).length() == 8)
-            this.rut = rut;
-        else
-            System.out.println("Rut invalido.");
+    private boolean verificacion(int n){
+        if(n > 5){ // verifica rut
+            if(Integer.toString(rut).length() == 8)
+                return true;
+            else
+            return false;
+        } else{ // verifica edad
+            if (edad >= 18)
+                return true;
+            else
+                return false;
+        }
     }
     
-    private boolean verificacion(String cadena){
+    private boolean verificacion(String cadena){ // Verificar nombre
         for (int x = 0; x < cadena.length(); x++) {
             char c = cadena.charAt(x);
             // Si no está entre a y z, ni entre A y Z, ni es un espacio
@@ -62,10 +73,7 @@ public class Postulante {
     }
 
     public void setNombre(String nombre){
-        if (verificacion(nombre)) // Si contiene solo letras
-            this.nombre = nombre;
-        else
-            System.out.println("Nombre invalido.");
+        this.nombre = nombre;
     }
     
     public String getNombre() {
@@ -73,10 +81,7 @@ public class Postulante {
     }
    
     public void setEdad(int edad){
-        if (edad >= 18)
-            this.edad = edad;
-        else
-            System.out.println("No puede postular.");
+        this.edad = edad;
     }
     
     public int getEdad(){    

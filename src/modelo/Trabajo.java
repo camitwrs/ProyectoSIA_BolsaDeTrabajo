@@ -1,4 +1,4 @@
-package bolsadetrabajo;
+package modelo;
 import java.util.ArrayList;
 
 public class Trabajo {
@@ -8,7 +8,12 @@ public class Trabajo {
     
     // Constructor
     public Trabajo(String nombre){
-        setNombre(nombre);
+        this.nombre = nombre;
+        this.requisitos = new ArrayList<>();
+        this.postulantes = new ArrayList<>();
+    }
+    
+    public Trabajo(){
         this.requisitos = new ArrayList<>();
         this.postulantes = new ArrayList<>();
     }
@@ -35,19 +40,10 @@ public class Trabajo {
         this.postulantes.add(p);
     }
     
-    public void mostrarPostulantes(){ 
-        if(postulantes.isEmpty())
-            System.out.println("No hay postulantes.");
-        else
-            for (Postulante post : postulantes) { // Por cada postulante en la colección de postulantes...
-                System.out.println("Nombre: "+post.getNombre()+"   Rut: "+post.getRut());
-            }
-    }
-    
     public int cantPostulantes(){
         int temp = 0;
         if(postulantes.isEmpty())
-            System.out.println("No hay postulantes.");
+            return 0;
         else
             for (Postulante post : postulantes) { // Por cada postulante en la colección de postulantes...
                 temp++;
