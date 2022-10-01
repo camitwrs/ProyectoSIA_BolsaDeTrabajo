@@ -12,4 +12,11 @@ public class MenuPersonaController {
     public static void ocultar(){
         ventana.setVisible(false);
     }
+    public static void eventoBoton1(){ // Boton postular
+        PostularController.mostrar();
+    }
+    
+    public static void eventoBoton2(){ // Boton me contrataron?
+        
+    }
 }

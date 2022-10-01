@@ -6,6 +6,7 @@ public class Trabajo {
     private String nombre; // Nombre del trabajo.
     private ArrayList<String> requisitos; // Lista de requisitos del puesto.
     private HashMap<Integer,Postulante> postulantes; // Lista de postulantes al puesto.
+    private HashMap<Integer,Contratado> contratados; // Lista de contratados en la empresa.
     
     // Constructor
     public Trabajo(String nombre){
@@ -36,18 +37,7 @@ public class Trabajo {
     public String toString() {
         return "Trabajo{" + "nombre=" + nombre + ", requisitos=" + requisitos + ", postulantes=" + postulantes + '}';
     }
-    
-    public void agregarPostulante(Postulante p){
-        this.postulantes.put(p.getRut(),p);
-    }
-    public void mostrarPostulantes(){ 
-        if(postulantes.isEmpty())
-            System.out.println("No hay postulantes.");
-        else
-            for (Postulante post : postulantes.values()) {
-                System.out.println("Nombre: "+post.getNombre()+" Edad: "+post.getEdad()+" Rut: "+post.getRut());
-            }
-}
+
     
 
     public int cantPostulantes(){

@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/controlador/CargaController.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/controlador/MenuPersonaController.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/modelo/Trabajo.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/vista/TipoUsuarioView.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/controlador/PostularController.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/vista/PostularView.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/controlador/MenuEmpresaController.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/vista/MenuPersonaView.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/modelo/Postulante.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/controlador/Main.java</file>
+            <file>file:/Users/rodrigoperalta/Documents/GitHub/ProyectoSIA_BolsaDeTrabajo/src/controlador/TipoUsuarioController.java</file>
+        </group>
     </open-files>
 </project-private>
