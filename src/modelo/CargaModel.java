@@ -44,5 +44,35 @@ public class CargaModel {
             }
         }
     }
+    
+    public void cargarPostulantes() throws FileNotFoundException{
+        BufferedReader lector = new BufferedReader(new FileReader("./data/postulantes.csv"));
+        String separador = ",";
+        String linea;
+        
+        try{
+            while((linea = lector.readLine())!=null){
+                String[] datoPostulante = linea.split(separador);
+                String nombre = datoPostulante[0];
+                int rut = Integer.parseInt(datoPostulante[1]);
+                int edad = Integer.parseInt(datoPostulante[2]);
+                int experiencia = Integer.parseInt(datoPostulante[3]);
+                String jornada = datoPostulante[4];
+                String hab1 = datoPostulante[5];
+                String hab2 = datoPostulante[6];
+                String hab3 = datoPostulante[7];
+                String puesto = datoPostulante[8];
+                String correo = datoPostulante[9];
+                
+                Postulante p = new Postulante(nombre, rut, edad, experiencia, jornada, correo, puesto);
+                p.agregarHabilidad(hab1);
+                p.agregarHabilidad(hab2);
+                p.agregarHabilidad(hab3);
+            }
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 
 }

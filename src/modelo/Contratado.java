@@ -12,7 +12,7 @@ public class Contratado extends Postulante{
     private int remuneracion;
 
     public Contratado(Postulante p, int remuneracion){
-        super(p.getNombre(), p.getRut(), p.getEdad(), p.getExperiencia(), p.getJornada(), p.getCorreo());
+        super(p.getNombre(), p.getRut(), p.getEdad(), p.getExperiencia(), p.getJornada(), p.getCorreo(), p.getPuesto());
         this.remuneracion = remuneracion;
         
     }

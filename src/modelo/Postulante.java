@@ -9,9 +9,10 @@ public class Postulante {
     private int experiencia; // Años de experiencia en el mundo laboral general.
     private String jornada; // Puede ser solo "fulltime" o "partime"
     private ArrayList<String> habilidades; // Lista de habilidades que posee el postulante.
- 
+    private String puesto;
+    
     // Constructor
-    public Postulante(String nombre, int rut, int edad, int experiencia, String jornada, String correo){
+    public Postulante(String nombre, int rut, int edad, int experiencia, String jornada, String correo, String puesto){
         this.correo = correo;
         this.experiencia = experiencia;
         this.jornada = jornada;
@@ -19,6 +20,7 @@ public class Postulante {
         this.rut = rut;
         this.edad = edad;
         this.habilidades = new ArrayList<>();
+        this.puesto = puesto;
     }
     
     
@@ -31,6 +33,14 @@ public class Postulante {
             return true;
         else
             return false;
+    }
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
     }
     
     public void setJornada(String jornada){
