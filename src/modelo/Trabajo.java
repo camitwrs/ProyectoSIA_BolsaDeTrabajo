@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Trabajo {
     private String nombre; // Nombre del trabajo.
+    private int remuneracion;
     private ArrayList<String> requisitos; // Lista de requisitos del puesto.
     
     // Constructor

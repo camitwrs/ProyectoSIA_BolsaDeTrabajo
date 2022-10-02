@@ -32,7 +32,7 @@ public class MenuEmpresaView extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("2. Filtrar por puesto");
+        jButton2.setText("2. Ver postulantes por puesto");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

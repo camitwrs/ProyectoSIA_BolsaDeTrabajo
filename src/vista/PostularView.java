@@ -323,7 +323,6 @@ public class PostularView extends javax.swing.JFrame {
         p.agregarHabilidad(hab3);
         Aplicacion.getInstancia().agregarPostulante(p);
         JOptionPane.showMessageDialog(null,"Postulando...");
-        Aplicacion.getInstancia().mostrarPostulantes();
         /*
             Aplicacion.getInstancia() nos permite utilizar las funciones dentro de
             la clase Aplicacion.java, pudiendo acceder a los HashMap generales.
@@ -381,8 +380,7 @@ public class PostularView extends javax.swing.JFrame {
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
         controlador.PostularController.eliminar();
-        controlador.MenuPersonaController.ocultar();
-        controlador.TipoUsuarioController.mostrar();
+        controlador.MenuPersonaController.mostrar();
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     public void llenarCombo(){

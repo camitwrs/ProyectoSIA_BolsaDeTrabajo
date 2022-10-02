@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
 import controlador.Aplicacion;
 import javax.swing.JOptionPane;
+import modelo.RutInvalidoException;
 
-/**
- *
- * @author MIEQUIPO
- */
 public class EliminarView extends javax.swing.JFrame {
 
     /**
@@ -38,7 +31,7 @@ public class EliminarView extends javax.swing.JFrame {
         rutField = new javax.swing.JTextField();
         puestoField = new javax.swing.JTextField();
         BotonEliminar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BotonRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,7 +58,12 @@ public class EliminarView extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Regresar");
+        BotonRegresar.setText("Regresar");
+        BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,9 +71,9 @@ public class EliminarView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(BotonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(185, 185, 185)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154)
+                .addComponent(BotonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(14, 33, Short.MAX_VALUE)
@@ -104,7 +102,7 @@ public class EliminarView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonEliminar)
-                    .addComponent(jButton2))
+                    .addComponent(BotonRegresar))
                 .addGap(54, 54, 54))
         );
 
@@ -117,17 +115,43 @@ public class EliminarView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Postulacion eliminada");
         }
         else{
-            JOptionPane.showMessageDialog(null,"No se encotro la postulacion o el puesto");
+            JOptionPane.showMessageDialog(null,"No se encontro la postulacion o el puesto");
         }
+        
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void rutFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rutFieldFocusLost
-        rut=Integer.parseInt(rutField.getText());
+        try{
+            rut = obtenerValor(rutField);
+        }catch(RutInvalidoException a){
+            JOptionPane.showMessageDialog(null,a.getMensaje());
+            rutField.setText("");
+        }
     }//GEN-LAST:event_rutFieldFocusLost
 
+     public int obtenerValor(javax.swing.JTextField field){
+        int auxiliar;
+        String auxTexto = field.getText();
+        try{
+            auxiliar = Integer.parseInt(auxTexto);
+        }catch(Exception a){
+            throw new RutInvalidoException("Rut contiene caracteres o está vacío.");
+        }
+        if (auxTexto.length() > 8){
+            throw new RutInvalidoException("Rut no debe tener digito verificador.");
+        }
+        return auxiliar;
+    }
+     
     private void puestoFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_puestoFieldFocusLost
         puesto=puestoField.getText();
     }//GEN-LAST:event_puestoFieldFocusLost
+
+    private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
+        controlador.EliminarController.eliminar();
+        controlador.MenuPersonaController.mostrar();
+        
+    }//GEN-LAST:event_BotonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,7 +190,7 @@ public class EliminarView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton BotonRegresar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField puestoField;
