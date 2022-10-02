@@ -15,6 +15,7 @@ public class AgregarPuestoView extends javax.swing.JFrame {
      */
     public AgregarPuestoView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

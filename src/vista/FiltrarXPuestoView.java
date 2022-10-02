@@ -15,6 +15,7 @@ public class FiltrarXPuestoView extends javax.swing.JFrame {
      */
     public FiltrarXPuestoView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

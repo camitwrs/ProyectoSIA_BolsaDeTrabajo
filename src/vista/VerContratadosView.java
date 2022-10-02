@@ -15,6 +15,7 @@ public class VerContratadosView extends javax.swing.JFrame {
      */
     public VerContratadosView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

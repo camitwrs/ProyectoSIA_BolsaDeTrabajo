@@ -6,6 +6,7 @@ package vista;
 
 import modelo.Postulante;
 import controlador.Aplicacion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +37,7 @@ public class PostularView extends javax.swing.JFrame {
      */
     public PostularView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -319,7 +321,7 @@ public class PostularView extends javax.swing.JFrame {
         */
         Postulante p = new Postulante(nombre, rut, edad, experiencia, jornada, correo, puesto);
         Aplicacion.getInstancia().agregarPostulante(p);
-        
+        JOptionPane.showMessageDialog(null,"Postulando");
         Aplicacion.getInstancia().mostrarPostulantes();
         /*
             Aplicacion.getInstancia() nos permite utilizar las funciones dentro de

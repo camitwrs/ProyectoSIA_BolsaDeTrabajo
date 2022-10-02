@@ -15,6 +15,7 @@ public class FiltrarXHabView extends javax.swing.JFrame {
      */
     public FiltrarXHabView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

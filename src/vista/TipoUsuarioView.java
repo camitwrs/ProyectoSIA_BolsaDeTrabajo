@@ -7,6 +7,7 @@ public class TipoUsuarioView extends javax.swing.JFrame {
      */
     public TipoUsuarioView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

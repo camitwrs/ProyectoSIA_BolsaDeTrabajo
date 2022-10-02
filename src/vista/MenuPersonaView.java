@@ -9,6 +9,7 @@ public class MenuPersonaView extends javax.swing.JFrame {
      */
     public MenuPersonaView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
