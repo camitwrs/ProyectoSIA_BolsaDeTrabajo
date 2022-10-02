@@ -60,17 +60,24 @@ public class Aplicacion {
     public ArrayList<Trabajo> conseguirTrabajos() {
         return trabajos;
     }
+        //borrar luego este print
+    public void mostrarTrabajos(){
+        for(int i = 0 ; i < trabajos.size() ; i++){
+            Trabajo aa = trabajos.get(i);
+            System.out.println("Nombre del trabajo: "+aa.getNombre()+" Habilidades requeridas del trabajo: "+aa.toString());
+        }
+    }
     
-    
-    public void agregarTrabajo(Trabajo t){
+    public boolean agregarTrabajo(Trabajo t){
         
         for(int i=0; i<trabajos.size();i++){
             if((trabajos.get(i).getNombre()).equals((t.getNombre()))){
                 //EL TRABAJO YA EXISTE
-                break;
+                return false;
             }
         }
         trabajos.add(t);
+        return true;
     }
     
     public boolean buscarPostulante(int rut){
@@ -89,6 +96,10 @@ public class Aplicacion {
             instancia = new Aplicacion();
         }
         return instancia;
+    }
+    
+    public void contratarPostulantes(){
+        
     }
 }
 

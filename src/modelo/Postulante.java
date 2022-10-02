@@ -10,6 +10,7 @@ public class Postulante {
     private String jornada; // Puede ser solo "fulltime" o "partime"
     private ArrayList<String> habilidades; // Lista de habilidades que posee el postulante.
     private String puesto;
+    private int puntos;
     
     // Constructor
     public Postulante(String nombre, int rut, int edad, int experiencia, String jornada, String correo, String puesto){
@@ -33,6 +34,14 @@ public class Postulante {
             return true;
         else
             return false;
+    }
+    
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
     }
 
     public String getPuesto() {

@@ -10,6 +10,7 @@ import controlador.Aplicacion;
 import controlador.MenuPersonaController;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import modelo.RutInvalidoException;
 
 /**
  *
@@ -40,8 +41,21 @@ public class PostularView extends javax.swing.JFrame {
     public PostularView() {
         initComponents();
         this.setLocationRelativeTo(null);
+        llenarCombo();
     }
-
+    public int obtenerValor(javax.swing.JFormattedTextField field){
+        int auxiliar;
+        String auxTexto = field.getText();
+        try{
+            auxiliar = Integer.parseInt(auxTexto);
+        }catch(Exception a){
+            throw new RutInvalidoException("Rut contiene caracteres.");
+        }
+        if (auxTexto.length() > 8){
+            throw new RutInvalidoException("Rut no debe tener digito verificador.");
+        }
+        return auxiliar;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -346,7 +360,12 @@ public class PostularView extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void FieldRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldRutFocusLost
-        rut = Integer.parseInt(FieldRut.getText());
+        try{
+            rut = obtenerValor(FieldRut);
+        }catch(RutInvalidoException a){
+            JOptionPane.showMessageDialog(null,a.getMensaje());
+            FieldRut.setText("");
+        }
     }//GEN-LAST:event_FieldRutFocusLost
 
     private void FieldNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldNombreFocusLost
@@ -383,10 +402,12 @@ public class PostularView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controlador.PostularController.ocultar();
-        controlador.MenuPersonaController.mostrar();
+        controlador.MenuPersonaController.ocultar();
+        llenarCombo();
+        controlador.TipoUsuarioController.mostrar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void llenarCombo(){
+    public void llenarCombo(){
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel();
         
         for(int i = 0 ; i < Aplicacion.getInstancia().conseguirTrabajos().size() ; i++){

@@ -11,15 +11,16 @@ import vista.PostularView;
  * @author rodrigoperalta
  */
 public class PostularController {
-    public static PostularView ventana = new PostularView();
+    public static PostularView ventana;
     
     public static void mostrar(){
+        ventana = new PostularView();
         ventana.setVisible(true);
     }
     
     public static void ocultar(){
-        ventana.setVisible(false);
+        ventana.dispose();
     }
-    
+
     
 }

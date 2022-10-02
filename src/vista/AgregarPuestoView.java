@@ -26,6 +26,7 @@ public class AgregarPuestoView extends javax.swing.JFrame {
     private String req1;
     private String req2;
     private String req3;
+    private boolean trabajoAgregado;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,6 +46,7 @@ public class AgregarPuestoView extends javax.swing.JFrame {
         Req3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        ReturnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,24 +58,44 @@ public class AgregarPuestoView extends javax.swing.JFrame {
 
         jLabel4.setText("Requisito 3:");
 
+        NombrePuesto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                NombrePuestoFocusLost(evt);
+            }
+        });
         NombrePuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombrePuestoActionPerformed(evt);
             }
         });
 
+        Req1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Req1FocusLost(evt);
+            }
+        });
         Req1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Req1ActionPerformed(evt);
             }
         });
 
+        Req2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Req2FocusLost(evt);
+            }
+        });
         Req2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Req2ActionPerformed(evt);
             }
         });
 
+        Req3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Req3FocusLost(evt);
+            }
+        });
         Req3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Req3ActionPerformed(evt);
@@ -89,6 +111,13 @@ public class AgregarPuestoView extends javax.swing.JFrame {
 
         jLabel5.setText("Ventana Agregar Puesto");
 
+        ReturnButton.setText("Regresar");
+        ReturnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReturnButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,7 +126,10 @@ public class AgregarPuestoView extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(60, 60, 60)
+                        .addComponent(ReturnButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -134,7 +166,9 @@ public class AgregarPuestoView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(Req3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(ReturnButton))
                 .addContainerGap(119, Short.MAX_VALUE))
         );
 
@@ -143,12 +177,12 @@ public class AgregarPuestoView extends javax.swing.JFrame {
 
     private void Req2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Req2ActionPerformed
         // TODO add your handling code here:
-        req2=Req2.getText();
+        
     }//GEN-LAST:event_Req2ActionPerformed
 
     private void NombrePuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombrePuestoActionPerformed
         // TODO add your handling code here:
-        puesto=NombrePuesto.getText();
+        
     }//GEN-LAST:event_NombrePuestoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -157,19 +191,49 @@ public class AgregarPuestoView extends javax.swing.JFrame {
         t.agregarRequisito(req1);
         t.agregarRequisito(req2);
         t.agregarRequisito(req3);
-        Aplicacion.getInstancia().agregarTrabajo(t);
-        JOptionPane.showMessageDialog(null,"Trabajo agregado");
+        trabajoAgregado = Aplicacion.getInstancia().agregarTrabajo(t);
+        if(trabajoAgregado){
+            JOptionPane.showMessageDialog(null,"Trabajo agregado");
+            Aplicacion.getInstancia().mostrarTrabajos();
+        }else
+        {
+            JOptionPane.showMessageDialog(null,"El trabajo ya existe");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Req1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Req1ActionPerformed
         // TODO add your handling code here:
-        req1=Req1.getText();
+        
     }//GEN-LAST:event_Req1ActionPerformed
 
     private void Req3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Req3ActionPerformed
         // TODO add your handling code here:
-        req3=Req3.getText();
+        
     }//GEN-LAST:event_Req3ActionPerformed
+
+    private void ReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnButtonActionPerformed
+        // TODO add your handling code here:
+        controlador.AgregarPuestoController.ocultar();
+        controlador.MenuEmpresaController.ocultar();
+        controlador.TipoUsuarioController.mostrar();
+    }//GEN-LAST:event_ReturnButtonActionPerformed
+
+    private void NombrePuestoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NombrePuestoFocusLost
+        puesto=NombrePuesto.getText();
+    }//GEN-LAST:event_NombrePuestoFocusLost
+
+    private void Req1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Req1FocusLost
+        req1=Req1.getText();
+    }//GEN-LAST:event_Req1FocusLost
+
+    private void Req2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Req2FocusLost
+        req2=Req2.getText();
+    }//GEN-LAST:event_Req2FocusLost
+
+    private void Req3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Req3FocusLost
+        req3=Req3.getText();
+    }//GEN-LAST:event_Req3FocusLost
 
     /**
      * @param args the command line arguments
@@ -211,6 +275,7 @@ public class AgregarPuestoView extends javax.swing.JFrame {
     private javax.swing.JTextField Req1;
     private javax.swing.JTextField Req2;
     private javax.swing.JTextField Req3;
+    private javax.swing.JButton ReturnButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
