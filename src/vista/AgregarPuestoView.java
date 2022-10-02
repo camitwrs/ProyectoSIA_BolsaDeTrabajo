@@ -4,6 +4,10 @@
  */
 package vista;
 
+import controlador.Aplicacion;
+import javax.swing.JOptionPane;
+import modelo.Trabajo;
+
 /**
  *
  * @author rodrigoperalta
@@ -18,6 +22,10 @@ public class AgregarPuestoView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    private String puesto;
+    private String req1;
+    private String req2;
+    private String req3;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,10 +39,10 @@ public class AgregarPuestoView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        NombrePuesto = new javax.swing.JTextField();
+        Req1 = new javax.swing.JTextField();
+        Req2 = new javax.swing.JTextField();
+        Req3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
@@ -48,23 +56,29 @@ public class AgregarPuestoView extends javax.swing.JFrame {
 
         jLabel4.setText("Requisito 3:");
 
-        jTextField1.setText("FieldNombre");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        NombrePuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                NombrePuestoActionPerformed(evt);
             }
         });
 
-        jTextField2.setText("FieldReq1");
-
-        jTextField3.setText("FieldReq2");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        Req1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                Req1ActionPerformed(evt);
             }
         });
 
-        jTextField4.setText("FieldReq3");
+        Req2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Req2ActionPerformed(evt);
+            }
+        });
+
+        Req3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Req3ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -92,10 +106,10 @@ public class AgregarPuestoView extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4))))
+                            .addComponent(NombrePuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                            .addComponent(Req1)
+                            .addComponent(Req2)
+                            .addComponent(Req3))))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,19 +120,19 @@ public class AgregarPuestoView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NombrePuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Req1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Req2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Req3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(jButton1)
                 .addContainerGap(119, Short.MAX_VALUE))
@@ -127,17 +141,35 @@ public class AgregarPuestoView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void Req2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Req2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+        req2=Req2.getText();
+    }//GEN-LAST:event_Req2ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void NombrePuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombrePuestoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        puesto=NombrePuesto.getText();
+    }//GEN-LAST:event_NombrePuestoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Trabajo t =new Trabajo(puesto);
+        t.agregarRequisito(req1);
+        t.agregarRequisito(req2);
+        t.agregarRequisito(req3);
+        Aplicacion.getInstancia().agregarTrabajo(t);
+        JOptionPane.showMessageDialog(null,"Trabajo agregado");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Req1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Req1ActionPerformed
+        // TODO add your handling code here:
+        req1=Req1.getText();
+    }//GEN-LAST:event_Req1ActionPerformed
+
+    private void Req3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Req3ActionPerformed
+        // TODO add your handling code here:
+        req3=Req3.getText();
+    }//GEN-LAST:event_Req3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,15 +207,15 @@ public class AgregarPuestoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField NombrePuesto;
+    private javax.swing.JTextField Req1;
+    private javax.swing.JTextField Req2;
+    private javax.swing.JTextField Req3;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

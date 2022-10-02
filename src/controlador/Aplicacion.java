@@ -56,6 +56,18 @@ public class Aplicacion {
             }
         });
     }
+    
+    public void agregarTrabajo(Trabajo t){
+        
+        for(int i=0; i<trabajos.size();i++){
+            if((trabajos.get(i).getNombre()).equals((t.getNombre()))){
+                //EL TRABAJO YA EXISTE
+                break;
+            }
+        }
+        trabajos.add(t);
+        
+    }
      // PATRON SINGLETON   
     public static Aplicacion getInstancia(){
         if(instancia == null){
