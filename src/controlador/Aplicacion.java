@@ -80,13 +80,15 @@ public class Aplicacion {
         return true;
     }
     
-    public boolean buscarPostulante(int rut){
-        boolean aux=false;
-        
-        if(aux==false){
-            return false;
+    public boolean buscarPostulanteContratado(int rut,String puesto){
+        Contratado aux;
+        if(contratados.containsKey(puesto)){
+            //se encontro el puesto
+            aux=contratados.get(puesto);//OBTIENE LA ARRAYLIST DEL PUESTO
+            if(aux.getRut()==rut){
+                return true;
+            }
         }
-     
         return false;
     }
     
