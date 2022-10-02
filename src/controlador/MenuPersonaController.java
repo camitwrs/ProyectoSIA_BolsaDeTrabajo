@@ -14,9 +14,11 @@ public class MenuPersonaController {
     }
     public static void eventoBoton1(){ // Boton postular
         PostularController.mostrar();
+        MenuPersonaController.ocultar();
     }
     
     public static void eventoBoton2(){ // Boton me contrataron?
-        
+        ContratadoController.mostrar();
+        MenuPersonaController.ocultar();
     }
 }

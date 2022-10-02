@@ -66,8 +66,18 @@ public class Aplicacion {
             }
         }
         trabajos.add(t);
-        
     }
+    
+    public boolean buscarPostulante(int rut){
+        boolean aux=false;
+        
+        if(aux==false){
+            return false;
+        }
+     
+        return false;
+    }
+    
      // PATRON SINGLETON   
     public static Aplicacion getInstancia(){
         if(instancia == null){
