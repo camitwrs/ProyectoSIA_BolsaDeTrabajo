@@ -1,5 +1,4 @@
-nombre, rut, edad, experiencia, jornada, hab1, hab2, hab3, puesto, correo
-Javier, 20272418, 22, 3, partime, C, Java, Python, Desarrollador de software, javier@gmail.com
-Camila, 20603557, 21, 0, fulltime, C, HTML, Python, Desarrollador de software, camila@gmail.com
-Luis, 10356962, 53, 7, fulltime, Julia, SQL, REST, Desarrollador de software, luis@gmail.com
-
+javier_peralta,20272418,22,3,partime,desarrollador_software,javier@gmail.com,C,Java,Python
+camila_torres,20603557,21,0,fulltime,analista_de_datos,camila@gmail.com,C,HTML,Python
+luis_araya,10356962,53,7,fulltime,experto_en_ciberseguridad,luis@gmail.com,Julia,SQL,REST
+kevin_araya,12345678,53,7,fulltime,experto_en_ciberseguridad,kevin@gmail.com,Julia,SQL,REST
