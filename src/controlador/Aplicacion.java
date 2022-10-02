@@ -52,7 +52,7 @@ public class Aplicacion {
         postulantes.entrySet().forEach(entry ->{
             var lista = entry.getValue();
             for(Postulante p: lista){
-                System.out.println("Nombre: "+p.getNombre()+" Edad: "+p.getEdad()+" Correo: "+p.getCorreo()+" Jornada: "+p.getJornada());
+                System.out.println("Nombre: "+p.getNombre()+" Edad: "+p.getEdad()+" Correo: "+p.getCorreo()+" Jornada: "+p.getJornada()+" Puesto: "+p.getPuesto());
             }
         });
     }
@@ -60,12 +60,9 @@ public class Aplicacion {
     public ArrayList<Trabajo> conseguirTrabajos() {
         return trabajos;
     }
-        //borrar luego este print
-    public void mostrarTrabajos(){
-        for(int i = 0 ; i < trabajos.size() ; i++){
-            Trabajo aa = trabajos.get(i);
-            System.out.println("Nombre del trabajo: "+aa.getNombre()+" Habilidades requeridas del trabajo: "+aa.toString());
-        }
+
+    public HashMap<String, ArrayList<Postulante>> conseguirMapPostulantes() {
+        return postulantes;
     }
     
     public boolean agregarTrabajo(Trabajo t){

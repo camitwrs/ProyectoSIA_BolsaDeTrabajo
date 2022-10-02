@@ -97,9 +97,11 @@ public class Postulante {
     public void setExperiencia(int experiencia) {
         this.experiencia = experiencia;
     }
-    
-     @Override
-    public String toString() { // Estado para objetos postulante.
-        return "Postulante{" + ", experiencia=" + experiencia + ", jornada=" + jornada + ", habilidades=" + habilidades + '}';
+
+    @Override
+    public String toString() {
+        return "Postulante{" + "nombre=" + nombre + ", rut=" + rut + ", edad=" + edad + ", correo=" + correo + ", experiencia=" + experiencia + ", jornada=" + jornada + ", habilidades=" + habilidades + ", puesto=" + puesto + '}';
     }
+    
+
 }

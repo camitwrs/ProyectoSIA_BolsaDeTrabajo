@@ -3,9 +3,10 @@ package controlador;
 import vista.MenuEmpresaView;
 
 public class MenuEmpresaController {
-    public static MenuEmpresaView ventana = new MenuEmpresaView();
+    public static MenuEmpresaView ventana;
     
     public static void mostrar(){
+        ventana = new MenuEmpresaView();
         ventana.setVisible(true);
     }
     
@@ -13,19 +14,19 @@ public class MenuEmpresaController {
         ventana.setVisible(false);
     }
     
-    public static void eventoBoton1(){ // Boton que muestra menu (ventana) persona
+    public static void eliminar(){
+        ventana.dispose();
+    }
+    
+    public static void eventoBoton1(){ 
         AgregarPuestoController.mostrar();
     }
     
-    public static void eventoBoton2(){ // Boton que muestra menu (ventana) persona
+    public static void eventoBoton2(){ 
         FiltrarXPuestoController.mostrar();
     }
     
-    public static void eventoBoton3(){ // Boton que muestra menu (ventana) persona
-        FiltrarXHabController.mostrar();
-    }
-    
-    public static void eventoBoton4(){ // Boton que muestra menu (ventana) persona
+    public static void eventoBoton4(){ 
         VerContratadosController.mostrar();
     }
 }

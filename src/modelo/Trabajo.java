@@ -1,7 +1,6 @@
 package modelo;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Trabajo {
     private String nombre; // Nombre del trabajo.
