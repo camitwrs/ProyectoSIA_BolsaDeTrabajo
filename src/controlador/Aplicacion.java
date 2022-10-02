@@ -26,7 +26,7 @@ public class Aplicacion {
     private static Aplicacion instancia = null; // PATRON SINGLETON
     private ArrayList<Trabajo> trabajos; // Lista de todos los trabajos en la empresa.
     private HashMap<String,ArrayList<Postulante>> postulantes; // Lista de postulantes al puesto.
-    private HashMap<String,ArrayList<Contratado>> contratados; // Lista de contratados en la empresa.
+    private HashMap<String,Contratado> contratados; // Lista de contratados en la empresa.
     private Aplicacion(){ // PATRON SINGLETON
         postulantes = new HashMap();
         contratados = new HashMap();
@@ -56,6 +56,11 @@ public class Aplicacion {
             }
         });
     }
+
+    public ArrayList<Trabajo> conseguirTrabajos() {
+        return trabajos;
+    }
+    
     
     public void agregarTrabajo(Trabajo t){
         

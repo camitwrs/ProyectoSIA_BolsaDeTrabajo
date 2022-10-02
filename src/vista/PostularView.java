@@ -5,7 +5,10 @@
 package vista;
 
 import modelo.Postulante;
+import modelo.Trabajo;
 import controlador.Aplicacion;
+import controlador.MenuPersonaController;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,7 +34,6 @@ public class PostularView extends javax.swing.JFrame {
     private String correo;
     private String puesto;
     
-    
     /**
      * Creates new form PostularView
      */
@@ -40,6 +42,7 @@ public class PostularView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,21 +54,13 @@ public class PostularView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        FieldRut = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        FieldNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        FieldEdad = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        FieldExperiencia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        FieldJornada = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        FieldHab1 = new javax.swing.JTextField();
-        FieldHab2 = new javax.swing.JTextField();
-        FieldHab3 = new javax.swing.JTextField();
         BotonPostular = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -73,79 +68,43 @@ public class PostularView extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        FieldCorreo = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         ComboPuesto = new javax.swing.JComboBox<>();
-        jLabel17 = new javax.swing.JLabel();
+        FieldRut = new javax.swing.JFormattedTextField();
+        FieldNombre = new javax.swing.JFormattedTextField();
+        FieldEdad = new javax.swing.JFormattedTextField();
+        FieldExperiencia = new javax.swing.JFormattedTextField();
+        FieldJornada = new javax.swing.JFormattedTextField();
+        FieldCorreo = new javax.swing.JFormattedTextField();
+        FieldHab1 = new javax.swing.JFormattedTextField();
+        FieldHab2 = new javax.swing.JFormattedTextField();
+        FieldHab3 = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Ventana Postular");
 
         jLabel2.setText("Rut:");
 
-        FieldRut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldRutActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Nombre:");
-
-        FieldNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldNombreActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Edad:");
 
-        FieldEdad.setToolTipText("");
-        FieldEdad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldEdadActionPerformed(evt);
-            }
-        });
-
         jLabel5.setText("Experiencia:");
 
-        FieldExperiencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldExperienciaActionPerformed(evt);
-            }
-        });
-
         jLabel6.setText("Jornada:");
-
-        FieldJornada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldJornadaActionPerformed(evt);
-            }
-        });
 
         jLabel7.setText("Habilidad 1:");
 
         jLabel8.setText("Habilidad 2:");
 
         jLabel9.setText("Habilidad 3:");
-
-        FieldHab1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldHab1ActionPerformed(evt);
-            }
-        });
-
-        FieldHab2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldHab2ActionPerformed(evt);
-            }
-        });
-
-        FieldHab3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldHab3ActionPerformed(evt);
-            }
-        });
 
         BotonPostular.setText("Postular");
         BotonPostular.addActionListener(new java.awt.event.ActionListener() {
@@ -166,22 +125,75 @@ public class PostularView extends javax.swing.JFrame {
 
         jLabel15.setText("Correo: ");
 
-        FieldCorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldCorreoActionPerformed(evt);
-            }
-        });
-
         jLabel16.setText("Puesto: ");
 
-        ComboPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboPuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboPuestoActionPerformed(evt);
             }
         });
 
-        jLabel17.setText("Presionar Enter para guardar");
+        FieldRut.setActionCommand("<Not Set>");
+        FieldRut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldRutFocusLost(evt);
+            }
+        });
+
+        FieldNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldNombreFocusLost(evt);
+            }
+        });
+
+        FieldEdad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldEdadFocusLost(evt);
+            }
+        });
+
+        FieldExperiencia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldExperienciaFocusLost(evt);
+            }
+        });
+
+        FieldJornada.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldJornadaFocusLost(evt);
+            }
+        });
+
+        FieldCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldCorreoFocusLost(evt);
+            }
+        });
+
+        FieldHab1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldHab1FocusLost(evt);
+            }
+        });
+
+        FieldHab2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldHab2FocusLost(evt);
+            }
+        });
+
+        FieldHab3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldHab3FocusLost(evt);
+            }
+        });
+
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,8 +204,7 @@ public class PostularView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel17))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
@@ -213,52 +224,55 @@ public class PostularView extends javax.swing.JFrame {
                                     .addComponent(jLabel16)
                                     .addComponent(jLabel15))
                                 .addGap(21, 21, 21)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(FieldHab1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(FieldRut, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(FieldHab2, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(FieldHab3)
-                            .addComponent(FieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(FieldEdad, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(FieldJornada, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel10)))
-                            .addComponent(FieldExperiencia, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel14)
-                            .addComponent(FieldCorreo)
-                            .addComponent(ComboPuesto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(150, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(jLabel10)))
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel14)
+                                    .addComponent(ComboPuesto, 0, 226, Short.MAX_VALUE)
+                                    .addComponent(FieldRut)
+                                    .addComponent(FieldNombre)
+                                    .addComponent(FieldEdad)
+                                    .addComponent(FieldExperiencia)
+                                    .addComponent(FieldJornada)
+                                    .addComponent(FieldCorreo)
+                                    .addComponent(FieldHab1)
+                                    .addComponent(FieldHab2)
+                                    .addComponent(FieldHab3)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(128, 128, 128))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel17))
-                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(FieldRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(FieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(FieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -267,21 +281,21 @@ public class PostularView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FieldJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(FieldJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14)
-                .addGap(12, 12, 12)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(FieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(ComboPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(FieldHab1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -290,26 +304,17 @@ public class PostularView extends javax.swing.JFrame {
                     .addComponent(FieldHab2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FieldHab3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(32, 32, 32)
-                .addComponent(BotonPostular)
+                    .addComponent(jLabel9)
+                    .addComponent(FieldHab3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonPostular)
+                    .addComponent(jButton1))
                 .addGap(42, 42, 42))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void FieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldNombreActionPerformed
-        // TODO add your handling code here:
-        nombre = FieldNombre.getText();
-        
-    }//GEN-LAST:event_FieldNombreActionPerformed
-
-    private void FieldRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldRutActionPerformed
-        // TODO add your handling code here:
-        rut = Integer.parseInt(FieldRut.getText());
-    }//GEN-LAST:event_FieldRutActionPerformed
 
     private void BotonPostularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPostularActionPerformed
         // TODO add your handling code here:
@@ -320,8 +325,11 @@ public class PostularView extends javax.swing.JFrame {
             
         */
         Postulante p = new Postulante(nombre, rut, edad, experiencia, jornada, correo, puesto);
+        p.agregarHabilidad(hab1);
+        p.agregarHabilidad(hab2);
+        p.agregarHabilidad(hab3);
         Aplicacion.getInstancia().agregarPostulante(p);
-        JOptionPane.showMessageDialog(null,"Postulando");
+        JOptionPane.showMessageDialog(null,"Postulando...");
         Aplicacion.getInstancia().mostrarPostulantes();
         /*
             Aplicacion.getInstancia() nos permite utilizar las funciones dentro de
@@ -329,47 +337,70 @@ public class PostularView extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_BotonPostularActionPerformed
 
-    private void FieldEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldEdadActionPerformed
-        // TODO add your handling code here:
-        edad = Integer.parseInt(FieldEdad.getText());
-    }//GEN-LAST:event_FieldEdadActionPerformed
-
-    private void FieldHab2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldHab2ActionPerformed
-        // TODO add your handling code here:
-        hab2 = FieldHab2.getText();
-    }//GEN-LAST:event_FieldHab2ActionPerformed
-
-    private void FieldExperienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldExperienciaActionPerformed
-        // TODO add your handling code here:
-        experiencia = Integer.parseInt(FieldExperiencia.getText());
-    }//GEN-LAST:event_FieldExperienciaActionPerformed
-
-    private void FieldHab1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldHab1ActionPerformed
-        // TODO add your handling code here:
-        hab1 = FieldHab1.getText();
-    }//GEN-LAST:event_FieldHab1ActionPerformed
-
-    private void FieldHab3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldHab3ActionPerformed
-        // TODO add your handling code here:
-        hab3 = FieldHab3.getText();
-    }//GEN-LAST:event_FieldHab3ActionPerformed
-
-    private void FieldJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldJornadaActionPerformed
-        // TODO add your handling code here:
-        jornada = FieldJornada.getText();
-    }//GEN-LAST:event_FieldJornadaActionPerformed
-
-    private void FieldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCorreoActionPerformed
-        // TODO add your handling code here:
-        correo = FieldCorreo.getText();
-        
-    }//GEN-LAST:event_FieldCorreoActionPerformed
-
     private void ComboPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboPuestoActionPerformed
-        // TODO add your handling code here:
-        
+        puesto = (String) ComboPuesto.getSelectedItem();
     }//GEN-LAST:event_ComboPuestoActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        llenarCombo();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void FieldRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldRutFocusLost
+        rut = Integer.parseInt(FieldRut.getText());
+    }//GEN-LAST:event_FieldRutFocusLost
+
+    private void FieldNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldNombreFocusLost
+        nombre = FieldNombre.getText();
+    }//GEN-LAST:event_FieldNombreFocusLost
+
+    private void FieldEdadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldEdadFocusLost
+        edad = Integer.parseInt(FieldEdad.getText());
+    }//GEN-LAST:event_FieldEdadFocusLost
+
+    private void FieldExperienciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldExperienciaFocusLost
+        experiencia = Integer.parseInt(FieldExperiencia.getText());
+    }//GEN-LAST:event_FieldExperienciaFocusLost
+
+    private void FieldJornadaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldJornadaFocusLost
+        jornada = FieldJornada.getText();
+    }//GEN-LAST:event_FieldJornadaFocusLost
+
+    private void FieldCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldCorreoFocusLost
+        correo = FieldCorreo.getText();
+    }//GEN-LAST:event_FieldCorreoFocusLost
+
+    private void FieldHab1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldHab1FocusLost
+        hab1 = FieldHab1.getText();
+    }//GEN-LAST:event_FieldHab1FocusLost
+
+    private void FieldHab2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldHab2FocusLost
+        hab2 = FieldHab2.getText();
+    }//GEN-LAST:event_FieldHab2FocusLost
+
+    private void FieldHab3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldHab3FocusLost
+        hab3 = FieldHab3.getText();
+    }//GEN-LAST:event_FieldHab3FocusLost
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controlador.PostularController.ocultar();
+        controlador.MenuPersonaController.mostrar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void llenarCombo(){
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel();
+        
+        for(int i = 0 ; i < Aplicacion.getInstancia().conseguirTrabajos().size() ; i++){
+            model.addElement(Aplicacion.getInstancia().conseguirTrabajos().get(i).getNombre());
+        }
+        
+        ComboPuesto.setModel(model);
+        ComboPuesto.setSelectedIndex(0);
+        
+        puesto = (String) ComboPuesto.getSelectedItem();
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -408,15 +439,16 @@ public class PostularView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonPostular;
     private javax.swing.JComboBox<String> ComboPuesto;
-    private javax.swing.JTextField FieldCorreo;
-    private javax.swing.JTextField FieldEdad;
-    private javax.swing.JTextField FieldExperiencia;
-    private javax.swing.JTextField FieldHab1;
-    private javax.swing.JTextField FieldHab2;
-    private javax.swing.JTextField FieldHab3;
-    private javax.swing.JTextField FieldJornada;
-    private javax.swing.JTextField FieldNombre;
-    private javax.swing.JTextField FieldRut;
+    private javax.swing.JFormattedTextField FieldCorreo;
+    private javax.swing.JFormattedTextField FieldEdad;
+    private javax.swing.JFormattedTextField FieldExperiencia;
+    private javax.swing.JFormattedTextField FieldHab1;
+    private javax.swing.JFormattedTextField FieldHab2;
+    private javax.swing.JFormattedTextField FieldHab3;
+    private javax.swing.JFormattedTextField FieldJornada;
+    private javax.swing.JFormattedTextField FieldNombre;
+    private javax.swing.JFormattedTextField FieldRut;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -425,7 +457,6 @@ public class PostularView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

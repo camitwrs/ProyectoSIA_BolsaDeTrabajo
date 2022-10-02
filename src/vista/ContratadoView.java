@@ -43,9 +43,9 @@ public class ContratadoView extends javax.swing.JFrame {
 
         jLabel2.setText("Ingrese su RUT");
 
-        FieldRut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldRutActionPerformed(evt);
+        FieldRut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldRutFocusLost(evt);
             }
         });
 
@@ -97,11 +97,6 @@ public class ContratadoView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FieldRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldRutActionPerformed
-        // TODO add your handling code here:
-        rut=Integer.parseInt(FieldRut.getText());
-    }//GEN-LAST:event_FieldRutActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if((Aplicacion.getInstancia().buscarPostulante(rut))==false){
@@ -109,6 +104,10 @@ public class ContratadoView extends javax.swing.JFrame {
         }
         //SI SE ENCONTRO EN EL MAPA DE CONTRATADO SE MUESTRA POR PANTALLA EL PUESTO Y SUELDO
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void FieldRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldRutFocusLost
+        rut=Integer.parseInt(FieldRut.getText());
+    }//GEN-LAST:event_FieldRutFocusLost
 
     /**
      * @param args the command line arguments

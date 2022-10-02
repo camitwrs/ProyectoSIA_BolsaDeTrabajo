@@ -33,10 +33,9 @@ public class Trabajo {
         return this.nombre;
     }
     
-    // Metodo para mostrar el estado del objeto
     @Override
     public String toString() {
-        return "Trabajo{" + "nombre=" + nombre + ", requisitos=" + requisitos + ", postulantes=" + postulantes + '}';
+        return this.nombre;
     }
 
     
