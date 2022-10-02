@@ -92,6 +92,20 @@ public class Aplicacion {
         return false;
     }
     
+    public boolean eliminarPostulacion(int rut, String puesto){
+        ArrayList <Postulante> aux;
+        if(postulantes.containsKey(puesto)){
+            //se encontro el puesto
+            aux=postulantes.get(puesto);
+            for(int i=0; i<aux.size();i++){
+                if(aux.get(i).getRut()==rut){
+                    return true;//se encontro la postulacion correspondiente al rut
+                }
+            }
+        }
+        return false;
+    }
+    
      // PATRON SINGLETON   
     public static Aplicacion getInstancia(){
         if(instancia == null){

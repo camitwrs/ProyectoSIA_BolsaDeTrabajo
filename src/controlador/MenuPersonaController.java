@@ -19,4 +19,12 @@ public class MenuPersonaController {
     public static void eventoBoton2(){ // Boton me contrataron?
         ContratadoController.mostrar();
     }
+    
+    public static void eventoBoton3(){ // Boton me contrataron?
+        ContratadoController.mostrar();
+    }
+    
+    public static void eventoBoton4(){ // Boton me contrataron?
+        EliminarController.mostrar();
+    }
 }
