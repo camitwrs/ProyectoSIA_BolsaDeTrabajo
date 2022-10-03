@@ -40,7 +40,6 @@ public class FiltrarXPuestoView extends javax.swing.JFrame {
 
         jLabel2.setText("Elija el puesto:");
 
-        ComboPuestos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboPuestos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboPuestosActionPerformed(evt);

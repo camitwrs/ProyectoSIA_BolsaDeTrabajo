@@ -56,6 +56,12 @@ public class Aplicacion {
     public HashMap<String, ArrayList<Postulante>> conseguirMapPostulantes() {
         return postulantes;
     }
+
+    public HashMap<String, Contratado> conseguirContratados() {
+        return contratados;
+    }
+    
+    
     
     public boolean agregarTrabajo(Trabajo t){
         

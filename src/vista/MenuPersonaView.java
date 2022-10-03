@@ -1,5 +1,7 @@
 package vista;
 
+import controlador.Aplicacion;
+
 
 public class MenuPersonaView extends javax.swing.JFrame {
 
@@ -104,7 +106,9 @@ public class MenuPersonaView extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonPostularActionPerformed
 
     private void BotonContratadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonContratadoActionPerformed
-        controlador.ContratadoController.mostrar();
+        Aplicacion.getInstancia().contratarPostulantes();
+        System.out.println(Aplicacion.getInstancia().conseguirContratados());
+        //controlador.ContratadoController.mostrar();
     }//GEN-LAST:event_BotonContratadoActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed

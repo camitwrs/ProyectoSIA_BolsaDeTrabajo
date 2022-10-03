@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vista;
 
 import controlador.Aplicacion;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author MIEQUIPO
- */
+
 public class ContratadoView extends javax.swing.JFrame {
 
     /**
@@ -32,7 +26,6 @@ public class ContratadoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         FieldRut = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -42,9 +35,7 @@ public class ContratadoView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ventana Contratado");
-
-        jLabel2.setText("Ingrese su RUT");
+        jLabel2.setText("Ingrese su RUT:");
 
         FieldRut.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -61,44 +52,37 @@ public class ContratadoView extends javax.swing.JFrame {
             }
         });
 
-        puestoField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoFieldActionPerformed(evt);
+        puestoField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                puestoFieldFocusLost(evt);
             }
         });
 
-        jLabel4.setText("Ingrese puesto postulado");
+        jLabel4.setText("Ingrese puesto postulado:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
-                                    .addComponent(jLabel2))
-                                .addGap(67, 67, 67)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(FieldRut, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                    .addComponent(puestoField))))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(jLabel2))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addComponent(puestoField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(FieldRut, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(FieldRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,7 +101,6 @@ public class ContratadoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         if((Aplicacion.getInstancia().buscarPostulanteContratado(rut,puesto))==false){
             JOptionPane.showMessageDialog(null,"No ha sido contratado para ningun puesto");
         }
@@ -125,16 +108,17 @@ public class ContratadoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Usted a sido contratado");
         }
         //SI SE ENCONTRO EN EL MAPA DE CONTRATADO SE MUESTRA POR PANTALLA EL PUESTO Y SUELDO
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void FieldRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldRutFocusLost
         rut=Integer.parseInt(FieldRut.getText());
     }//GEN-LAST:event_FieldRutFocusLost
 
-    private void puestoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoFieldActionPerformed
-        // TODO add your handling code here:
+    private void puestoFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_puestoFieldFocusLost
         puesto=puestoField.getText();
-    }//GEN-LAST:event_puestoFieldActionPerformed
+    }//GEN-LAST:event_puestoFieldFocusLost
 
     /**
      * @param args the command line arguments
@@ -175,7 +159,6 @@ public class ContratadoView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FieldRut;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
