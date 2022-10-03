@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
 import java.io.FileNotFoundException;
@@ -12,16 +8,12 @@ import modelo.CargaModel;
 import modelo.Contratado;
 import modelo.Postulante;
 
-/**
- *
- * @author javi_
- */
-
 /*
 Desde el controlador Aplicacion se llaman a todas las demás funciones, ya que
 contiene a: el ArrayList de trabajos, el HashMap de todos los postulantes y
 el HashMap de todos los contratados.
 */
+
 public class Aplicacion {
     private static Aplicacion instancia = null; // PATRON SINGLETON
     private ArrayList<Trabajo> trabajos; // Lista de todos los trabajos en la empresa.
@@ -32,8 +24,8 @@ public class Aplicacion {
         contratados = new HashMap();
     }
     public void inicio() throws FileNotFoundException{
-        trabajos = CargaModel.cargarPuestos();
-        CargaModel.cargarPostulantes(this);
+        trabajos = CargaModel.cargar();
+        CargaModel.cargar(this);
         TipoUsuarioController.mostrar();
         while(true){}
     }
@@ -60,9 +52,7 @@ public class Aplicacion {
     public HashMap<String, Contratado> conseguirContratados() {
         return contratados;
     }
-    
-    
-    
+
     public boolean agregarTrabajo(Trabajo t){
         
         for(int i=0; i<trabajos.size();i++){

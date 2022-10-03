@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class CargaModel {
     
-    public static ArrayList<Trabajo> cargarPuestos ()throws FileNotFoundException {
+    public static ArrayList<Trabajo> cargar ()throws FileNotFoundException {
         BufferedReader lector = new BufferedReader(new FileReader("./data/trabajos.csv"));
         String linea;
         ArrayList <Trabajo> puestos = new ArrayList();
@@ -41,7 +41,7 @@ public class CargaModel {
         return null;
     }
     
-    public static HashMap<String,ArrayList<Postulante>> cargarPostulantes(Aplicacion app) throws FileNotFoundException{
+    public static HashMap<String,ArrayList<Postulante>> cargar(Aplicacion app) throws FileNotFoundException{
         BufferedReader lector = new BufferedReader(new FileReader("./data/postulantes.csv"));
         String linea;
         HashMap<String,ArrayList<Postulante>> postGenerales = new HashMap();
@@ -65,9 +65,7 @@ public class CargaModel {
                     p.agregarHabilidad(hab1);
                     p.agregarHabilidad(hab2);
                     p.agregarHabilidad(hab3);
-                    
-                    //System.out.println(p);
-                    //System.out.println("ANTESSSSS Nombre: "+p.getNombre()+" Rut: "+p.getRut()+" Edad: "+p.getEdad()+" Experiencia: "+p.getExperiencia()+" Jornada: "+p.getJornada()+" Puesto: "+p.getPuesto()+" Correo: "+p.getCorreo());
+                   
                     app.agregarPostulante(p);
                 }
             }

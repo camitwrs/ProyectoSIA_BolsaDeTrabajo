@@ -27,8 +27,7 @@ public class Postulante {
     public Postulante(){
         this.habilidades = new ArrayList();
     }
-    
-    
+   
     public void agregarHabilidad(String hab){
         this.habilidades.add(hab);
     }

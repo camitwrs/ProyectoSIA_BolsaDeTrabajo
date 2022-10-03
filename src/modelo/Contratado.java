@@ -15,5 +15,13 @@ public class Contratado extends Postulante{
     public void setRemuneracion(int remuneracion) {
         this.remuneracion = remuneracion;
     }
+
+    @Override
+    public String toString() {
+        return "Contratado{" + "remuneracion=" + remuneracion + '}';
+    }
+
+
+    
     
 }
