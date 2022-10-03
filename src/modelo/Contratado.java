@@ -25,7 +25,3 @@ public class Contratado extends Postulante{
     }
     
 }
-
-/*
-    Contratado a = Postulante b;
-*/

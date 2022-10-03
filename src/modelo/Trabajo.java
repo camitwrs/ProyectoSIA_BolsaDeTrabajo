@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Trabajo {
     private String nombre; // Nombre del trabajo.
-    private int remuneracion;
+    private int remuneracion; // Remuneracion del puesto.
     private ArrayList<String> requisitos; // Lista de requisitos del puesto.
     
     // Constructor
@@ -30,17 +30,22 @@ public class Trabajo {
         return this.nombre;
     }
     
+    public void setRemuneracion(int remuneracion){
+        this.remuneracion = remuneracion;
+    }
+    
+    public int getRemuneracion(){
+        return remuneracion;
+    }
     @Override
     public String toString() {
         return this.nombre;
     }
+    
+    public ArrayList<String> getRequisitos(){
+        return this.requisitos;
+    }
 
     
-
-    public int cantPostulantes(){
-        int temp = 0;
-        //Arreglar esto
-        return temp;
-    }
     
 }

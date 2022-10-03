@@ -22,6 +22,10 @@ public class Postulante {
         this.edad = edad;
         this.habilidades = new ArrayList<>();
         this.puesto = puesto;
+        this.puntos = 0;
+    }
+    public Postulante(){
+        this.habilidades = new ArrayList();
     }
     
     
@@ -41,7 +45,7 @@ public class Postulante {
     }
 
     public void setPuntos(int puntos) {
-        this.puntos = puntos;
+        this.puntos = this.puntos + puntos;
     }
 
     public String getPuesto() {
@@ -102,6 +106,8 @@ public class Postulante {
     public String toString() {
         return "Postulante{" + "nombre=" + nombre + ", rut=" + rut + ", edad=" + edad + ", correo=" + correo + ", experiencia=" + experiencia + ", jornada=" + jornada + ", habilidades=" + habilidades + ", puesto=" + puesto + '}';
     }
-    
+    public ArrayList<String> getHabilidades(){
+        return this.habilidades;
+    }
 
 }

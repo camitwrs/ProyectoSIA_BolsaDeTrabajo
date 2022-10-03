@@ -104,7 +104,45 @@ public class Aplicacion {
     }
     
     public void contratarPostulantes(){
-        
+        for(int i = 0 ; i < trabajos.size() ; i++){
+            Trabajo tt = trabajos.get(i);
+            String nombrePuesto = tt.getNombre();
+            ArrayList<Postulante> listaPostulantes = postulantes.get(nombrePuesto);
+            for(int j = 0 ; j < listaPostulantes.size() ; j++){
+                Postulante pp = listaPostulantes.get(j);
+                ArrayList<String> habilidadesPostulante = pp.getHabilidades();
+                ArrayList<String> requisitosTrabajo = tt.getRequisitos();
+                pp.setPuntos(puntosXHabilidad(requisitosTrabajo, habilidadesPostulante));
+                if(pp.getExperiencia() >= 2 && pp.getExperiencia() <= 4){
+                    pp.setPuntos(1);
+                }
+                if(pp.getExperiencia() >= 5){
+                    pp.setPuntos(2);
+                }
+            }
+            Postulante postulanteMax = new Postulante();
+            for(int n = 0; n < listaPostulantes.size()-1 ; n++){
+                Postulante aa = listaPostulantes.get(n+1);
+                Postulante bb = listaPostulantes.get(n);
+                if(aa.getPuntos() > bb.getPuntos()){
+                    postulanteMax = aa;
+                }
+            }
+            Contratado trabajador = new Contratado(postulanteMax, tt.getRemuneracion());
+            contratados.put(nombrePuesto, trabajador);
+        }
+    }
+    
+    public int puntosXHabilidad(ArrayList<String> habs, ArrayList<String> reqs){
+        int puntos = 0;
+        for(int k = 0 ; k < reqs.size() ; k++){
+            for(int l = 0 ; l < habs.size() ; l++){
+                if(habs.get(l).equals(reqs.get(k))){
+                    puntos = puntos + 2;
+                }
+            }   
+        }
+        return puntos;
     }
 }
 
