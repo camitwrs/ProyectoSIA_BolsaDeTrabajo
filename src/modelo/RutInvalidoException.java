@@ -1,9 +1,5 @@
 package modelo;
 
-/**
- *
- * @author rodrigoperalta
- */
 public class RutInvalidoException extends NumberFormatException{
     private String mensaje;
     public RutInvalidoException(String mensaje){
