@@ -26,7 +26,4 @@ public class MenuEmpresaController {
         FiltrarXPuestoController.mostrar();
     }
     
-    public static void eventoBoton4(){ 
-        VerContratadosController.mostrar();
-    }
 }
