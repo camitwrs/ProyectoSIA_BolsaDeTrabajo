@@ -28,7 +28,6 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="BotonContratado" max="32767" attributes="0"/>
                   <Component id="BotonPostular" max="32767" attributes="0"/>
-                  <Component id="BotonModificar" max="32767" attributes="0"/>
                   <Component id="BotonEliminar" min="-2" pref="247" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="283" max="32767" attributes="0"/>
@@ -45,9 +44,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
               <Component id="BotonPostular" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="BotonModificar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="BotonEliminar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="BotonContratado" min="-2" max="-2" attributes="0"/>
@@ -69,23 +66,15 @@
     </Component>
     <Component class="javax.swing.JButton" name="BotonContratado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="4. Ver si he sido contratado"/>
+        <Property name="text" type="java.lang.String" value="3. Ver si he sido contratado"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonContratadoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BotonModificar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="2. Modificar postulaci&#xf3;n"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonModificarActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="BotonEliminar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="3. Eliminar postulaci&#xf3;n"/>
+        <Property name="text" type="java.lang.String" value="2. Eliminar postulaci&#xf3;n"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonEliminarActionPerformed"/>

@@ -33,10 +33,13 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="puestoField" alignment="1" pref="180" max="32767" attributes="0"/>
-                          <Component id="FieldRut" alignment="1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="puestoField" alignment="1" pref="180" max="32767" attributes="0"/>
+                              <Component id="FieldRut" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="BotonRegresar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -60,7 +63,10 @@
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="94" max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BotonRegresar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -99,6 +105,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingrese puesto postulado:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="BotonRegresar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonRegresarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -15,7 +15,6 @@ public class Trabajo {
     
     public Trabajo() throws FileNotFoundException{
         this.requisitos = new ArrayList();
-        //this.postulantes = new HashMap();
     }
     
     public void agregarRequisito(String req){

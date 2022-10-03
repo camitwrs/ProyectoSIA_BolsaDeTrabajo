@@ -32,6 +32,7 @@ public class ContratadoView extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         puestoField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        BotonRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,13 @@ public class ContratadoView extends javax.swing.JFrame {
 
         jLabel4.setText("Ingrese puesto postulado:");
 
+        BotonRegresar.setText("Regresar");
+        BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,10 +81,12 @@ public class ContratadoView extends javax.swing.JFrame {
                             .addComponent(jButton1)
                             .addComponent(jLabel2))
                         .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3)
-                            .addComponent(puestoField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(FieldRut, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3)
+                                .addComponent(puestoField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                .addComponent(FieldRut, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(BotonRegresar))))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,7 +103,9 @@ public class ContratadoView extends javax.swing.JFrame {
                     .addComponent(puestoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(BotonRegresar))
                 .addGap(42, 42, 42))
         );
 
@@ -119,6 +131,10 @@ public class ContratadoView extends javax.swing.JFrame {
     private void puestoFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_puestoFieldFocusLost
         puesto=puestoField.getText();
     }//GEN-LAST:event_puestoFieldFocusLost
+
+    private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
+        controlador.ContratadoController.eliminar();
+    }//GEN-LAST:event_BotonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +173,7 @@ public class ContratadoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonRegresar;
     private javax.swing.JTextField FieldRut;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;

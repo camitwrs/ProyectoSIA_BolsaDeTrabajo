@@ -4,7 +4,11 @@
  */
 package controlador;
 
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import modelo.Trabajo;
@@ -126,16 +130,16 @@ public class Aplicacion {
                     pp.setPuntos(2);
                 }
             }
-            Postulante postulanteMax = new Postulante();
-            for(int n = 0; n < listaPostulantes.size()-1 ; n++){
-                Postulante aa = listaPostulantes.get(n+1);
+            Postulante postulanteMax = listaPostulantes.get(0);
+            for(int n = 0; n < listaPostulantes.size(); n++){
                 Postulante bb = listaPostulantes.get(n);
-                if(aa.getPuntos() > bb.getPuntos()){
-                    postulanteMax = aa;
+                if(bb.getPuntos() > postulanteMax.getPuntos()){
+                    postulanteMax = bb;
                 }
             }
             Contratado trabajador = new Contratado(postulanteMax, tt.getRemuneracion());
             contratados.put(nombrePuesto, trabajador);
+            
         }
     }
     
@@ -149,6 +153,24 @@ public class Aplicacion {
             }   
         }
         return puntos;
+    }
+    
+    public void exportar() throws IOException{
+        try{
+            File archivo = new File("reporte.txt");
+            FileWriter aux = new FileWriter(archivo);
+            try (BufferedWriter output = new BufferedWriter(aux)) {
+                output.write(mostrarPuestos());
+                output.write("---------------------------------------------------\n");
+                output.write(mostrarPostulantes());
+                output.write("---------------------------------------------------\n");
+                output.write(mostrarContratados());
+            }
+        }catch(IOException e){
+            e.getStackTrace();
+            System.out.println("Exportación INVALIDA");
+            return;
+        }
     }
 }
 

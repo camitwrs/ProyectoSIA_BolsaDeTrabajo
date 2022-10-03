@@ -24,7 +24,6 @@ public class MenuPersonaView extends javax.swing.JFrame {
 
         BotonPostular = new javax.swing.JButton();
         BotonContratado = new javax.swing.JButton();
-        BotonModificar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         BotonRegresar = new javax.swing.JButton();
 
@@ -37,21 +36,14 @@ public class MenuPersonaView extends javax.swing.JFrame {
             }
         });
 
-        BotonContratado.setText("4. Ver si he sido contratado");
+        BotonContratado.setText("3. Ver si he sido contratado");
         BotonContratado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonContratadoActionPerformed(evt);
             }
         });
 
-        BotonModificar.setText("2. Modificar postulación");
-        BotonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonModificarActionPerformed(evt);
-            }
-        });
-
-        BotonEliminar.setText("3. Eliminar postulación");
+        BotonEliminar.setText("2. Eliminar postulación");
         BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarActionPerformed(evt);
@@ -74,7 +66,6 @@ public class MenuPersonaView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BotonContratado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonPostular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(283, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -87,9 +78,7 @@ public class MenuPersonaView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(170, 170, 170)
                 .addComponent(BotonPostular)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BotonModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(BotonEliminar)
                 .addGap(30, 30, 30)
                 .addComponent(BotonContratado)
@@ -107,13 +96,8 @@ public class MenuPersonaView extends javax.swing.JFrame {
 
     private void BotonContratadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonContratadoActionPerformed
         Aplicacion.getInstancia().contratarPostulantes();
-        System.out.println(Aplicacion.getInstancia().conseguirContratados());
-        //controlador.ContratadoController.mostrar();
+        controlador.ContratadoController.mostrar();
     }//GEN-LAST:event_BotonContratadoActionPerformed
-
-    private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
-        controlador.ModificarController.mostrar();
-    }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         controlador.EliminarController.mostrar();
@@ -131,7 +115,6 @@ public class MenuPersonaView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonContratado;
     private javax.swing.JButton BotonEliminar;
-    private javax.swing.JButton BotonModificar;
     private javax.swing.JButton BotonPostular;
     private javax.swing.JButton BotonRegresar;
     // End of variables declaration//GEN-END:variables

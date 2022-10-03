@@ -10,6 +10,7 @@ public class AgregarPuestoView extends javax.swing.JFrame {
     private String req2;
     private String req3;
     private boolean trabajoAgregado;
+    private int remuneracion;
     
     /**
      * Creates new form AgregarPuestoView
@@ -39,6 +40,7 @@ public class AgregarPuestoView extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         ReturnButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        FieldRemuneracion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,7 +90,13 @@ public class AgregarPuestoView extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setText("Remuneracion:");
+
+        FieldRemuneracion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FieldRemuneracionFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,26 +106,25 @@ public class AgregarPuestoView extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ReturnButton)
+                        .addGap(85, 85, 85))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(NombrePuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                             .addComponent(Req1)
                             .addComponent(Req2)
-                            .addComponent(Req3))
-                        .addContainerGap(103, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ReturnButton)
-                        .addGap(85, 85, 85))))
+                            .addComponent(Req3)
+                            .addComponent(FieldRemuneracion))
+                        .addContainerGap(103, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,9 +145,11 @@ public class AgregarPuestoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(Req3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addComponent(jLabel5)
-                .addGap(33, 33, 33)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(FieldRemuneracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(ReturnButton))
@@ -152,10 +161,11 @@ public class AgregarPuestoView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Trabajo t =new Trabajo(puesto);
+        Trabajo t = new Trabajo(puesto);
         t.agregarRequisito(req1);
         t.agregarRequisito(req2);
         t.agregarRequisito(req3);
+        t.setRemuneracion(remuneracion);
         trabajoAgregado = Aplicacion.getInstancia().agregarTrabajo(t);
         if(trabajoAgregado){
             JOptionPane.showMessageDialog(null,"Trabajo agregado");
@@ -188,6 +198,10 @@ public class AgregarPuestoView extends javax.swing.JFrame {
     private void Req3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Req3FocusLost
         req3=Req3.getText();
     }//GEN-LAST:event_Req3FocusLost
+
+    private void FieldRemuneracionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FieldRemuneracionFocusLost
+        remuneracion = Integer.parseInt(FieldRemuneracion.getText());
+    }//GEN-LAST:event_FieldRemuneracionFocusLost
 
     /**
      * @param args the command line arguments
@@ -225,6 +239,7 @@ public class AgregarPuestoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField FieldRemuneracion;
     private javax.swing.JTextField NombrePuesto;
     private javax.swing.JTextField Req1;
     private javax.swing.JTextField Req2;
