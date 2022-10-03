@@ -117,6 +117,7 @@ public class MenuPersonaView extends javax.swing.JFrame {
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
         controlador.TipoUsuarioController.mostrar();
+        controlador.MenuPersonaController.ocultar();
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     /**

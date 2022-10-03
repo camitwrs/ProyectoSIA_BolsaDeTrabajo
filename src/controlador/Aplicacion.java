@@ -37,6 +37,7 @@ public class Aplicacion {
         TipoUsuarioController.mostrar();
         while(true){}
     }
+    
     public void agregarPostulante(Postulante aa){
         if(postulantes.containsKey(aa.getPuesto())){
             var lista = postulantes.get(aa.getPuesto());
@@ -46,15 +47,6 @@ public class Aplicacion {
             lista.add(aa);
             postulantes.put(aa.getPuesto(), lista);
         }
-    }
-    // borrar luego el print
-    public void mostrarPostulantes(){
-        postulantes.entrySet().forEach(entry ->{
-            var lista = entry.getValue();
-            for(Postulante p: lista){
-                System.out.println("Nombre: "+p.getNombre()+" Edad: "+p.getEdad()+" Correo: "+p.getCorreo()+" Jornada: "+p.getJornada()+" Puesto: "+p.getPuesto());
-            }
-        });
     }
 
     public ArrayList<Trabajo> conseguirTrabajos() {
@@ -90,13 +82,13 @@ public class Aplicacion {
     }
     
     public boolean eliminarPostulacion(int rut, String puesto){
-        ArrayList <Postulante> aux;
         if(postulantes.containsKey(puesto)){
-            //se encontro el puesto
-            aux=postulantes.get(puesto);
-            for(int i=0; i<aux.size();i++){
-                if(aux.get(i).getRut()==rut){
-                    return true;//se encontro la postulacion correspondiente al rut
+            var lista = postulantes.get(puesto);
+            for(int i = 0 ; i < lista.size() ; i++){
+                Postulante p = lista.get(i);
+                if(p.getRut() == rut){
+                    lista.remove(i);
+                    return true;
                 }
             }
         }

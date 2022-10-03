@@ -111,12 +111,10 @@ public class EliminarView extends javax.swing.JFrame {
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         // TODO add your handling code here:
-        if((Aplicacion.getInstancia().eliminarPostulacion(rut,puesto))==true){
+        if((Aplicacion.getInstancia().eliminarPostulacion(rut,puesto)))
             JOptionPane.showMessageDialog(null,"Postulacion eliminada");
-        }
-        else{
+        else
             JOptionPane.showMessageDialog(null,"No se encontro la postulacion o el puesto");
-        }
         
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
@@ -149,7 +147,6 @@ public class EliminarView extends javax.swing.JFrame {
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
         controlador.EliminarController.eliminar();
-        controlador.MenuPersonaController.mostrar();
         
     }//GEN-LAST:event_BotonRegresarActionPerformed
 

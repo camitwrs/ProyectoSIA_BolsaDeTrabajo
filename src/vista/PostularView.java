@@ -380,7 +380,7 @@ public class PostularView extends javax.swing.JFrame {
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
         controlador.PostularController.eliminar();
-        controlador.MenuPersonaController.mostrar();
+        //controlador.MenuPersonaController.mostrar();
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     public void llenarCombo(){
