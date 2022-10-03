@@ -152,15 +152,43 @@ public class Aplicacion {
             try (BufferedWriter output = new BufferedWriter(aux)) {
                 output.write(mostrarPuestos());
                 output.write("---------------------------------------------------\n");
-                output.write(mostrarPostulantes());
+                //output.write(mostrarPostulantes());
                 output.write("---------------------------------------------------\n");
-                output.write(mostrarContratados());
             }
         }catch(IOException e){
-            e.getStackTrace();
+            //e.getStackTrace();
             System.out.println("Exportación INVALIDA");
-            return;
         }
+    }
+   public String mostrarPuestos() throws IOException{
+       String cadena = "";
+       String requisitos = "";
+        for(int i = 0; i < trabajos.size() ; i++){
+            Trabajo tt = trabajos.get(i);
+            for(int j = 0 ; j < tt.getRequisitos().size() ; j++){
+                requisitos = tt.getRequisitos().toString();
+            }
+            System.out.println(requisitos);
+            cadena = "Nombre: "+cadena+tt.getNombre()+" Remuneracion: "+tt.getRemuneracion()+" Requisitos: "+requisitos;
+        }
+        return cadena;
+    }
+    
+    public String mostrarPostulantes(){
+        String cadena = "";
+        String habilidades = "";
+        for (Object value : postulantes.values()) {
+            ArrayList<Postulante> listaP = (ArrayList<Postulante>)value;
+            for(int i = 0 ; i < listaP.size() ; i++){
+                Postulante pp = listaP.get(i);
+                for(int j = 0 ; j < pp.getHabilidades().size() ; j++){
+                    habilidades = habilidades+pp.getHabilidades().get(i);
+                }
+                cadena = "Nombre: "+pp.getNombre()+" Rut: "+pp.getRut()+" Edad: "+pp.getEdad()+" Correo: "+pp.getCorreo()+" Puesto: "+pp.getPuesto()+" Años de experiencia: "+pp.getExperiencia()+" Puntos: "+pp.getPuntos()+" Jornada: "+pp.getJornada()+habilidades;
+            }
+        }
+        return cadena;
+        
     }
 }
 

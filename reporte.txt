@@ -1,0 +1,2 @@
+Nombre: Nombre: Nombre: desarrollador_web Remuneracion: 0 Requisitos: [javascript, sql, angular]analista_de_datos Remuneracion: 0 Requisitos: [python, excel, sql]experto_en_ciberseguridad Remuneracion: 0 Requisitos: [bash, cloud_security, firewall]---------------------------------------------------
+---------------------------------------------------

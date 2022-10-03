@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
